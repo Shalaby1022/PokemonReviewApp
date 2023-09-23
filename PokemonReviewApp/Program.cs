@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using PokemonReviewApp.Data;
+using PokemonReviewApp.Data.Interface;
 using PokemonReviewApp.Migrations;
+using PokemonReviewApp.Repository;
 
 namespace PokemonReviewApp
 {
@@ -23,7 +25,16 @@ namespace PokemonReviewApp
             // Add services to the container.
             builder.Services.AddTransient<Seeding>();
             builder.Services.AddControllers();
-        
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
+            //registering repos 
+            builder.Services.AddScoped<IPokemonRepository, PokemonRepository>();
+
+
+
+
+            
 
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
