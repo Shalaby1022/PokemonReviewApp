@@ -7,6 +7,10 @@ namespace PokemonReviewApp.Profiles
         public MappingProfiles()
         {
             CreateMap<Models.Pokemon , DTOs.PokemonDto>();
+            CreateMap<Models.Category , DTOs.CategoryDto>();
+            CreateMap<Models.Country , DTOs.CountryDto>();  
+            CreateMap<Models.Owner , DTOs.OwnerDto>();
+
 
         }
 
