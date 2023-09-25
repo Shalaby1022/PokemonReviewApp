@@ -7,6 +7,8 @@ namespace PokemonReviewApp.Profiles
         public MappingProfiles()
         {
             CreateMap<Models.Pokemon , DTOs.PokemonDto>();
+              CreateMap<DTOs.PokemonDto, Models.Pokemon>();
+
 
             CreateMap<Models.Category , DTOs.CategoryDto>();
                CreateMap<DTOs.CategoryDto, Models.Category>();
@@ -18,7 +20,11 @@ namespace PokemonReviewApp.Profiles
               CreateMap<DTOs.OwnerDto, Models.Owner>(); 
 
             CreateMap<Models.Review , DTOs.ReviewDto>();
+               CreateMap<DTOs.ReviewDto, Models.Review>();
+
             CreateMap<Models.Reviewer , DTOs.ReviewerDto>();
+              CreateMap<DTOs.ReviewerDto, Models.Reviewer>();
+
 
         }
 
