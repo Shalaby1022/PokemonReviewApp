@@ -93,5 +93,33 @@ namespace PokemonReviewApp.Controllers
 
             return Ok("Successfully created");
         }
+        [HttpPut("{revieweId}")]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(404)]
+        public IActionResult UpdatePokemon(int revieweId, [FromBody] ReviewDto updatedReviewe)
+        {
+            if (updatedReviewe == null)
+                return BadRequest(ModelState);
+
+            if (revieweId != updatedReviewe.Id)
+                return BadRequest(ModelState);
+
+            if (!_reviewRepository.ReviewExist(revieweId))
+                return NotFound();
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            var revieweMap = _mapper.Map<Review>(updatedReviewe);
+
+            if (!_reviewRepository.UpdateReview(revieweMap))
+            {
+                ModelState.AddModelError("", "Something went wrong updating Reviewe");
+                return StatusCode(500, ModelState);
+            }
+
+            return NoContent();
+        }
     }
 }
