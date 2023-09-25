@@ -1,0 +1,39 @@
+﻿using PokemonReviewApp.Data;
+using PokemonReviewApp.Data.Interface;
+using PokemonReviewApp.Models;
+
+namespace PokemonReviewApp.Repository
+{
+    public class ReviewerRepository : IReviewerRepsitory
+    {
+        private readonly PokemonDbContext _context;
+
+        public ReviewerRepository(PokemonDbContext context)
+        {
+            _context = context;
+        }
+        public ICollection<Reviewer> GetAllReviewrs()
+        {
+            return _context.Reviwers.ToList();
+        }
+
+        public Reviewer GetReviewerById(int id)
+        {
+            var reviewer = _context.Reviwers.FirstOrDefault(p=>p.Id == id);
+            if (reviewer == null) { return null; }
+            return reviewer;
+        }
+
+        public ICollection<Review> GetReviewsFromAReviewer(int Reviewrid)
+        {
+            var reviewsOFreviewer = _context.Reviews.Where(p=>p.Id == Reviewrid).ToList();
+            return reviewsOFreviewer;
+        }
+
+        public bool ReviewerExist(int id)
+        {
+            return _context.Reviwers.Any(p => p.Id == id);
+
+        }
+    }
+}

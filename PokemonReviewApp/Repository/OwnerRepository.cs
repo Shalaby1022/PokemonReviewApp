@@ -12,6 +12,13 @@ namespace PokemonReviewApp.Repository
         {
             _context = context;
         }
+
+        public bool CreateOwner(Owner owner)
+        {
+            _context.Add(owner);
+            return save();
+        }
+
         public ICollection<Owner> GetAllOwners()
         {
            return _context.Owners.ToList();
@@ -42,6 +49,12 @@ namespace PokemonReviewApp.Repository
         {
             return _context.Owners.Any(p=>p.Id == ownerId);
 
+        }
+
+        public bool save()
+        {
+            var saved = _context.SaveChanges();
+            return saved >0 ? true : false;
         }
     }
 }
