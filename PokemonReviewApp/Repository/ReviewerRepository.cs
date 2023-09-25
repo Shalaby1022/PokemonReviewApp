@@ -12,6 +12,13 @@ namespace PokemonReviewApp.Repository
         {
             _context = context;
         }
+
+        public bool CreateReviewer(Reviewer reviewer)
+        {
+            _context.Add(reviewer);
+            return true;
+        }
+
         public ICollection<Reviewer> GetAllReviewrs()
         {
             return _context.Reviwers.ToList();
@@ -34,6 +41,12 @@ namespace PokemonReviewApp.Repository
         {
             return _context.Reviwers.Any(p => p.Id == id);
 
+        }
+
+        public bool save()
+        {
+            var saved = _context.SaveChanges();
+            return saved >0 ?true : false;
         }
     }
 }
