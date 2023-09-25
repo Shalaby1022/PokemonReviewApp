@@ -81,9 +81,28 @@ namespace PokemonReviewApp.Controllers
             }
 
             return Ok(categorymap);
+        }
 
+        [HttpPut("{categoryId}")]
 
+        public IActionResult UpdateCategory(int categoryId, [FromBody] CategoryDto updateCategory)
+        {
+            if (updateCategory == null) return BadRequest(ModelState);
 
+            if(categoryId != updateCategory.Id) return BadRequest(ModelState);
+
+            if (!_categoryRepository.CategoryExist(categoryId)) return NotFound();
+
+            if(!ModelState.IsValid) return BadRequest(ModelState);
+
+            var categoryMap = _mapper.Map<Category>(updateCategory);
+
+            if(!_categoryRepository.UpdateCategory(categoryMap))
+            {
+                ModelState.AddModelError("", "Somehting went wrong while updaing category");
+                return StatusCode(500, ModelState);
+            }
+            return Ok("Successfully updated");
 
 
 
