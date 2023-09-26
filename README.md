@@ -8,7 +8,6 @@ Welcome to PokemonReviewApp! This project is an ASP.NET Core Web API application
 - [Lessons Learned](#lessons-learned)
 - [Getting Started](#getting-started)
 - [Contributing](#contributing)
-- [Acknowledgments](#acknowledgments)
 
 ## Project Overview
 <a name="project-overview"></a>
@@ -76,8 +75,4 @@ To run this project locally, follow these steps:
 ## Contributing
 <a name="contributing"></a>
 Contributions to this project are welcome! If you find any issues or have ideas for improvements, please open an issue or create a pull request.
-
-## Acknowledgments
-<a name="acknowledgments"></a>
-We'd like to express our appreciation to Teddy Smith for providing an excellent tutorial series. Your guidance and real-time problem-solving have made learning ASP.NET Core Web API development enjoyable and insightful.
 
