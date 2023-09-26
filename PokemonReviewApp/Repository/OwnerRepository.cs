@@ -19,6 +19,12 @@ namespace PokemonReviewApp.Repository
             return save();
         }
 
+        public bool DeleteOwner(Owner owner)
+        {
+            _context.Remove(owner);
+            return save();
+        }
+
         public ICollection<Owner> GetAllOwners()
         {
            return _context.Owners.ToList();

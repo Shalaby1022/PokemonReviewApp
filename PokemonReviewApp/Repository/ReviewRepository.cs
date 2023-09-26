@@ -20,6 +20,12 @@ namespace PokemonReviewApp.Repository
 
         }
 
+        public bool DeleteReview(Review review)
+        {
+            _context.Remove(review);
+            return save();
+        }
+
         public ICollection<Review> GetAllReviews()
         {
             return _context.Reviews.ToList();
