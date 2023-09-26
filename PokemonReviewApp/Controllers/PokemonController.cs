@@ -12,11 +12,13 @@ namespace PokemonReviewApp.Controllers
     {
         private readonly IPokemonRepository _pokemonRepository;
         private readonly IMapper _mapper;
+        private readonly IReviewRepository _reviewRepository;
 
-        public PokemonController(IPokemonRepository pokemonRepository , IMapper mapper )
+        public PokemonController(IPokemonRepository pokemonRepository , IMapper mapper , IReviewRepository reviewRepository)
         {
             _pokemonRepository = pokemonRepository;
             _mapper = mapper;
+            _reviewRepository = reviewRepository;
         }
 
        [HttpGet]
@@ -116,6 +118,47 @@ namespace PokemonReviewApp.Controllers
 
             return NoContent();
         }
+        [HttpDelete("{pokeId}")]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(404)]
+        public IActionResult DeletePokemon(int pokeId)
+        {
+            if (!_pokemonRepository.pokiemonExist(pokeId))
+            {
+                return NotFound();
+            }
+
+            var reviewsToDelete = _reviewRepository.GetRviewsofAPokemon(pokeId);
+            var pokemonToDelete = _pokemonRepository.GetPokieById(pokeId);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            foreach (var review in reviewsToDelete)
+            {
+                if (!_reviewRepository.DeleteReview(review))
+                {
+                    ModelState.AddModelError("", "Something went wrong when deleting reviews");
+                }
+            }
+
+            if (!_pokemonRepository.DeletePokemon(pokemonToDelete))
+            {
+                ModelState.AddModelError("", "Something went wrong deleting Pokemon");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            return NoContent();
+        }
+
+
 
 
     }
