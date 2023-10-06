@@ -87,7 +87,7 @@ namespace PokemonReviewApp.Controllers
 
             var ownerMap = _mapper.Map<Owner>(ownerCreate);
 
-            ownerMap.Country = _countryRepository.GetCountry(countryId);
+            ownerMap.Country = _countryRepository.GetCountryById(countryId);
 
 
             if (!_ownerRepsitory.CreateOwner(ownerMap))
@@ -127,7 +127,7 @@ namespace PokemonReviewApp.Controllers
         {
             if (!_countryRepository.CountryExist(ownerId)) return NotFound();
 
-            var countryToDelete = _countryRepository.GetCountry(ownerId);
+            var countryToDelete = _countryRepository.GetCountryById(ownerId);
 
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
@@ -139,6 +139,9 @@ namespace PokemonReviewApp.Controllers
 
             return NoContent();
         }
+        
+      
+        
 
     }
 }

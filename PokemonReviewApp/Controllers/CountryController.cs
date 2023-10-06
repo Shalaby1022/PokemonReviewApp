@@ -38,7 +38,7 @@ namespace PokemonReviewApp.Controllers
             if (!_countryRepository.CountryExist(countryId))
                 return NotFound();
 
-            var country = _mapper.Map<CountryDto>(_countryRepository.GetCountry(countryId));
+            var country = _mapper.Map<CountryDto>(_countryRepository.GetCountryById(countryId));
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -118,7 +118,7 @@ namespace PokemonReviewApp.Controllers
         public IActionResult DeleteCountry(int countryId)
         {
             if (!_countryRepository.CountryExist(countryId)) return NotFound();
-            var countryToDelete = _countryRepository.GetCountry(countryId);
+            var countryToDelete = _countryRepository.GetCountryById(countryId);
 
             if (!ModelState.IsValid) return BadRequest(ModelState);
 

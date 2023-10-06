@@ -20,11 +20,19 @@ namespace PokemonReviewApp.Controllers
             _mapper = mapper;
         }
 
+        //[HttpGet]
+        //public IActionResult GetAllCategories()
+        //{
+        //    var categories = _mapper.Map<IEnumerable<CategoryDto>>(_categoryRepository.GetCategories());
+        //    if(!ModelState.IsValid) { return BadRequest(ModelState); }
+        //    return Ok(categories);
+        //}
+
         [HttpGet]
-        public IActionResult GetAllategories()
+        public IActionResult GetAllCategories(string? name , string? SearchQuery )
         {
-            var categories = _mapper.Map<IEnumerable<CategoryDto>>(_categoryRepository.GetCategories());
-            if(!ModelState.IsValid) { return BadRequest(ModelState); }
+            var categories = _mapper.Map<IEnumerable<CategoryDto>>(_categoryRepository.GetAllCategories(name , SearchQuery));
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
             return Ok(categories);
         }
 
@@ -32,7 +40,7 @@ namespace PokemonReviewApp.Controllers
         public IActionResult GetCategory(int CategoryId)
         {
             if(!_categoryRepository.CategoryExist(CategoryId)) { return NotFound();}
-            var specificcategory = _mapper.Map<CategoryDto>(_categoryRepository.GetCAtegoryById(CategoryId));
+            var specificcategory = _mapper.Map<CategoryDto>(_categoryRepository.GetCategoryById(CategoryId));
             if(!ModelState.IsValid) return BadRequest(ModelState);
             return Ok(specificcategory);
         }
@@ -113,7 +121,7 @@ namespace PokemonReviewApp.Controllers
                 return NotFound();
             }
 
-            var categoryToDelete = _categoryRepository.GetCAtegoryById(categoryId);
+            var categoryToDelete = _categoryRepository.GetCategoryById(categoryId);
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
