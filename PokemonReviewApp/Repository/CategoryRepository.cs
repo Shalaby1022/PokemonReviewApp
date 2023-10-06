@@ -21,7 +21,7 @@ namespace PokemonReviewApp.Repository
 
         public bool CreateCategory(Category category)
         {
-            _context.Add(category);
+           _context.Add(category);
             return Save();
 
 
@@ -38,11 +38,34 @@ namespace PokemonReviewApp.Repository
            var categories = _context.Categories.ToList();
             return categories;
         }
-
-        public Category GetCAtegoryById(int id)
+        public ICollection<Category> GetAllCategories(string? name, string? SearchQuery)
         {
+            if(string.IsNullOrEmpty(name) && string.IsNullOrEmpty(SearchQuery)) return GetCategories();
+
+            var collection = _context.Categories as IQueryable<Category>;   
+
+            if(!string.IsNullOrEmpty(name))
+            {
+                name = name.Trim();
+                collection = collection.Where(c=>c.Name  == name);
+            }
+
+            if(!string.IsNullOrEmpty(SearchQuery))
+            {
+                SearchQuery = SearchQuery.Trim();
+                collection = collection.Where(a=>a.Name.Contains(SearchQuery));
+                
+
+            }
+
+            return collection.ToList();
+        }
+
+        public Category GetCategoryById(int id)
+        {
+            if(id == null) throw new ArgumentNullException("No id matching this");
             var onecategory = _context.Categories.FirstOrDefault(p=>p.Id == id);
-            if(onecategory == null) { return null; }
+            if (onecategory is null) throw new KeyNotFoundException("Category not found");
             return onecategory;
         }
 
