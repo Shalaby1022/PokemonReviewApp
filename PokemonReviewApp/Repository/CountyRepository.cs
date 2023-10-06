@@ -37,11 +37,16 @@ namespace PokemonReviewApp.Repository
 
         }
 
-        public Country GetCountry(int id)
+        public Country GetCountryById(int id)
         {
-            return _context.Countries.Where(c => c.Id == id).FirstOrDefault();
+            if (id <= 0)
+            {
+                throw new ArgumentException("Invalid country ID");
+            }
 
+            return _context.Countries.FirstOrDefault(c => c.Id == id);
         }
+
 
         public Country GetCountryByOwner(int ownerid)
         {

@@ -1,4 +1,5 @@
-﻿using PokemonReviewApp.Data;
+﻿using Microsoft.AspNetCore.Server.IIS.Core;
+using PokemonReviewApp.Data;
 using PokemonReviewApp.Data.Interface;
 using PokemonReviewApp.Models;
 
@@ -33,7 +34,7 @@ namespace PokemonReviewApp.Repository
         public Owner GetOwnerById(int ownerId)
         {
             var ownie = _context.Owners.FirstOrDefault(o => o.Id == ownerId);
-            if (ownie != null) { return null; }
+            if (ownie is null) throw new ArgumentException("owner isn't found");
             return ownie;
         }
 

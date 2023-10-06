@@ -2,6 +2,7 @@
 using PokemonReviewApp.Data;
 using PokemonReviewApp.Data.Interface;
 using PokemonReviewApp.Models;
+using System.Net;
 
 namespace PokemonReviewApp.Repository
 {
@@ -62,9 +63,9 @@ namespace PokemonReviewApp.Repository
         public Pokemon GetPokieById(int id)
         {
             var pokie = _context.Pokemons.FirstOrDefault(p => p.Id == id);
-            if (pokie == null)
+            if (pokie is null)
             {
-                return null;
+                throw new ArgumentException("Pokemon can't be Found");
             }
             return pokie;
         } 
@@ -72,7 +73,11 @@ namespace PokemonReviewApp.Repository
         public Pokemon GetPokieByName(string name)
         {
             var pokiename = _context.Pokemons.FirstOrDefault(p=>p.Name == name);
-            if (pokiename == null) return null;
+
+            if (pokiename is null)
+            {
+                throw new ArgumentException("Pokemon can't be Found");
+            }
             return pokiename;
         }
 

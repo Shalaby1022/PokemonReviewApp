@@ -34,7 +34,7 @@ namespace PokemonReviewApp.Repository
         public Review GetReview(int id)
         {
             var reviewi = _context.Reviews.FirstOrDefault(x => x.Id == id);
-            if (reviewi == null)  {return  null; }
+            if(reviewi is null) { throw new ArgumentException(nameof(reviewi)); }
             return reviewi;
         }
 

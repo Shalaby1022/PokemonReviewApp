@@ -33,7 +33,9 @@ namespace PokemonReviewApp.Repository
         public Reviewer GetReviewerById(int id)
         {
             var reviewer = _context.Reviwers.FirstOrDefault(p=>p.Id == id);
-            if (reviewer == null) { return null; }
+
+            if (reviewer is null) throw new ArgumentException("Reviewer can't be found");
+
             return reviewer;
         }
 
@@ -52,7 +54,7 @@ namespace PokemonReviewApp.Repository
         public bool save()
         {
             var saved = _context.SaveChanges();
-            return saved >0 ?true : false;
+            return saved > 0 ?true : false;
         }
 
         public bool UpdateReviewer(Reviewer reviewer)
