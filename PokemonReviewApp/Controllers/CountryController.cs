@@ -7,7 +7,8 @@ using PokemonReviewApp.Repository;
 
 namespace PokemonReviewApp.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
+    [ApiVersion("1.0")]
     [ApiController]
     public class CountryController : Controller
     {
@@ -16,8 +17,9 @@ namespace PokemonReviewApp.Controllers
 
         public CountryController(ICountryRepository countryRepository, IMapper mapper)
         {
-            _countryRepository = countryRepository;
-            _mapper = mapper;
+            _countryRepository = countryRepository ?? throw new ArgumentNullException(nameof(countryRepository));
+
+            _mapper = mapper?? throw new ArgumentNullException(nameof(mapper));
         }
 
         [HttpGet]
