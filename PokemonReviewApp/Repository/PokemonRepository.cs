@@ -12,7 +12,7 @@ namespace PokemonReviewApp.Repository
 
         public PokemonRepository(PokemonDbContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public bool CreatePokemon(int ownerId, int categoryId, Pokemon pokemonn)

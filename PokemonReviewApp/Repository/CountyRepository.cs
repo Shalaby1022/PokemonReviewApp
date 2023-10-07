@@ -11,7 +11,7 @@ namespace PokemonReviewApp.Repository
 
         public CountyRepository(PokemonDbContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public bool CountryExist(int id)

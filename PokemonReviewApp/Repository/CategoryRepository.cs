@@ -11,7 +11,7 @@ namespace PokemonReviewApp.Repository
         private readonly PokemonDbContext _context;
         public CategoryRepository(PokemonDbContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
         public bool CategoryExist(int categoryId)
         {

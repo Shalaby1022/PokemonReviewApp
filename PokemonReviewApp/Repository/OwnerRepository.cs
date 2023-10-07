@@ -11,7 +11,7 @@ namespace PokemonReviewApp.Repository
 
         public OwnerRepository(PokemonDbContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public bool CreateOwner(Owner owner)

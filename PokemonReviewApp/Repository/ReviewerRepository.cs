@@ -10,7 +10,7 @@ namespace PokemonReviewApp.Repository
 
         public ReviewerRepository(PokemonDbContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public bool CreateReviewer(Reviewer reviewer)
