@@ -7,8 +7,10 @@ using PokemonReviewApp.Repository;
 
 namespace PokemonReviewApp.Controllers
 {
+    [Route("api/v{version:apiVersion}/Reviewer")]
+    [ApiVersion("2.0")]
     [ApiController]
-    [Route("api/Reviewer")]
+
     public class ReviewerController : Controller
     {
         private readonly IReviewerRepsitory _reviewerRepsitory;
@@ -16,8 +18,8 @@ namespace PokemonReviewApp.Controllers
 
         public ReviewerController(IReviewerRepsitory reviewerRepsitory , IMapper mapper)
         {
-            _reviewerRepsitory = reviewerRepsitory;
-            _mapper = mapper;
+            _reviewerRepsitory = reviewerRepsitory ?? throw new ArgumentNullException(nameof(reviewerRepsitory));
+            _mapper = mapper?? throw new ArgumentNullException(nameof(mapper));
         }
        [HttpGet]
        public IActionResult GetReviewers()

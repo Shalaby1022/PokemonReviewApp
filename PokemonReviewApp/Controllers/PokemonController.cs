@@ -6,8 +6,10 @@ using PokemonReviewApp.Models;
 
 namespace PokemonReviewApp.Controllers
 {
+    [Route("api/v{version:apiVersion}/pokemon")]
+    [ApiVersion("2.0")]
     [ApiController]
-    [Route("api/pokemon")]
+    
     public class PokemonController : Controller
     {
         private readonly IPokemonRepository _pokemonRepository;
@@ -16,9 +18,9 @@ namespace PokemonReviewApp.Controllers
 
         public PokemonController(IPokemonRepository pokemonRepository , IMapper mapper , IReviewRepository reviewRepository)
         {
-            _pokemonRepository = pokemonRepository;
-            _mapper = mapper;
-            _reviewRepository = reviewRepository;
+            _pokemonRepository = pokemonRepository ?? throw new ArgumentNullException(nameof(pokemonRepository));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _reviewRepository = reviewRepository ?? throw new ArgumentNullException(nameof(reviewRepository));
         }
 
        [HttpGet]
