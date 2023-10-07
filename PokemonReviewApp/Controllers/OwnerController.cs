@@ -7,7 +7,8 @@ using PokemonReviewApp.Repository;
 
 namespace PokemonReviewApp.Controllers
 {
-    [Route("api/Owner")]
+    [Route("api/v{version:apiVersion}/Owner")]
+    [ApiVersion("1.0")]
     [ApiController]
     public class OwnerController : Controller
     {
@@ -17,9 +18,9 @@ namespace PokemonReviewApp.Controllers
 
         public OwnerController(IOwnerRepository ownerRepository, IMapper mapper , ICountryRepository countryRepository)
         {
-            _ownerRepsitory = ownerRepository;
-            _mapper = mapper;
-            _countryRepository = countryRepository;
+            _ownerRepsitory = ownerRepository ?? throw new ArgumentNullException(nameof(ownerRepository));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _countryRepository = countryRepository ?? throw new ArgumentNullException(nameof(countryRepository));
         }
 
         [HttpGet]
