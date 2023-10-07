@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PokemonReviewApp</name>
+    </assembly>
+    <members>
+        <member name="T:PokemonReviewApp.Controllers.CategoryController">
+            <summary>
+            Represents a controller for managing categories.
+            </summary>
+        </member>
+        <member name="M:PokemonReviewApp.Controllers.CategoryController.#ctor(PokemonReviewApp.Data.Interface.ICategoryRepository,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PokemonReviewApp.Controllers.CategoryController"/> class.
+            </summary>
+            <param name="categoryRepository">The category repository.</param>
+            <param name="mapper">The AutoMapper instance.</param>
+        </member>
+        <member name="M:PokemonReviewApp.Controllers.CategoryController.GetAllCategories(System.String,System.String)">
+            <summary>
+            Gets all categories with optional filtering and Searching.
+            </summary>
+            <param name="name">The name of the category.</param>
+            <param name="SearchQuery">The search query.</param>
+            <returns>Returns a collection of categories.</returns>
+        </member>
+        <member name="M:PokemonReviewApp.Controllers.CategoryController.GetCategory(System.Int32)">
+            <summary>
+            Gets a specific category by ID.
+            </summary>
+            <param name="CategoryId">The ID of the category.</param>
+            <returns>Returns the specified category.</returns>
+            
+        </member>
+        <member name="M:PokemonReviewApp.Controllers.CategoryController.GetPokemonByCategoryId(System.Int32)">
+            <summary>
+            Gets all Pokemon for a specific category.
+            </summary>
+            <param name="categoryId">The ID of the category.</param>
+            <returns>Returns a collection of Pokemon for the specified category.</returns>
+        </member>
+        <member name="M:PokemonReviewApp.Controllers.CategoryController.CreateNewCategory(PokemonReviewApp.DTOs.CategoryDto)">
+            <summary>
+            Creates a new category.
+            </summary>
+            <param name="categoryCreate">The data for the new category.</param>
+            <returns>
+            Returns Ok with the created category if successful.
+            Returns BadRequest if the input data is invalid or null.
+            Returns StatusCode 422 if a category with the same name already exists.
+            Returns StatusCode 500 if there is an issue with mapping data or creating the category.
+            </returns>
+        </member>
+        <member name="M:PokemonReviewApp.Controllers.CategoryController.UpdateCategory(System.Int32,PokemonReviewApp.DTOs.CategoryDto)">
+            <summary>
+            Updates a category by ID.
+            </summary>
+            <param name="categoryId">The ID of the category to update.</param>
+            <param name="updateCategory">The updated category data.</param>
+            <returns>Returns Ok with a success message if the update is successful.</returns>
+        </member>
+        <member name="M:PokemonReviewApp.Controllers.CategoryController.DeleteCategory(System.Int32)">
+            <summary>
+            Deletes a category by ID.
+            </summary>
+            <param name="categoryId">The ID of the category to delete.</param>
+            <returns>Returns NoContent if the deletion is successful.</returns>
+        </member>
+        <member name="T:PokemonReviewApp.Migrations.versionone">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.versionone.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.versionone.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.versionone.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:PokemonReviewApp.Migrations.versiontwo">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.versiontwo.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.versiontwo.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.versiontwo.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:PokemonReviewApp.Migrations.seed">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.seed.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.seed.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.seed.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:PokemonReviewApp.Migrations.sedding8">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.sedding8.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.sedding8.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.sedding8.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
