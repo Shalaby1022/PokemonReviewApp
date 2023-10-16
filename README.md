@@ -28,10 +28,17 @@ PokemonReviewApp is a practical demonstration of building a functional ASP.NET C
    - Employing dependency injection for modularity and testability.
    - Utilizing the repository pattern for data access.
 
-5. **Swagger Documentation:**
-   - Incorporating Swagger UI for interactive API documentation.
+5. **Searching and Filtering:**
+   - Implementing functionality for searching and filtering Pokemon, Owners, and Categories.
 
-6. **Error Handling:**
+6. **Versioning:**
+   - Incorporating versioning to manage API changes over time.
+
+7. **Documentation:**
+   - Documenting API endpoints for enhanced developer experience.
+   - Leveraging Swagger UI for interactive API documentation.
+
+8. **Error Handling:**
    - Handling errors and providing appropriate HTTP status codes.
 
 ## Key Features
@@ -62,6 +69,9 @@ During the development of PokemonReviewApp, we've gained valuable insights into:
 - Designing controllers and actions for CRUD operations.
 - Promoting modularity and testability through dependency injection and the repository pattern.
 - Enhancing the developer experience with interactive API documentation using Swagger UI.
+- Adding searching and filtering functionality for improved data retrieval.
+- Managing API versioning to accommodate changes over time.
+- Documenting API endpoints for better clarity and understanding.
 
 ## Getting Started
 <a name="getting-started"></a>
@@ -75,4 +85,3 @@ To run this project locally, follow these steps:
 ## Contributing
 <a name="contributing"></a>
 Contributions to this project are welcome! If you find any issues or have ideas for improvements, please open an issue or create a pull request.
-
