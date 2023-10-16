@@ -25,7 +25,7 @@ namespace PokemonReviewApp.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost("register")]
+    [HttpPost("register")]
         public async Task<IActionResult> RegisterNewUserAsync([FromBody] RegisterDto register)
         {
             if (register == null) return BadRequest(ModelState);
@@ -44,7 +44,7 @@ namespace PokemonReviewApp.Controllers
 
             return Ok("Successfully Added");
         }
-        [HttpPost("Token")]
+    [HttpPost("Token")]
         public async Task<IActionResult> GetTokenAsync([FromBody] TokenRequestDto token)
         {
             if (token == null) return BadRequest(ModelState);
