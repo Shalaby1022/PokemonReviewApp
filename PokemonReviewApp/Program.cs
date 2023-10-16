@@ -28,6 +28,8 @@ namespace PokemonReviewApp
 
             });
 
+          
+
 
             // Add services to the container.
             builder.Services.AddTransient<Seeding>();
@@ -64,6 +66,8 @@ namespace PokemonReviewApp
 
 
 
+
+
             //registering repos 
             builder.Services.AddScoped<IPokemonRepository, PokemonRepository>();
             builder.Services.AddScoped<ICategoryRepository , CategoryRepository>();
@@ -71,6 +75,7 @@ namespace PokemonReviewApp
             builder.Services.AddScoped<IOwnerRepository , OwnerRepository>();
             builder.Services.AddScoped<IReviewRepository , ReviewRepository>();
             builder.Services.AddScoped<IReviewerRepsitory , ReviewerRepository>();
+
             builder.Services.AddScoped<IAuthRepository, AuthRepsitory>();
 
 

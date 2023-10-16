@@ -114,5 +114,50 @@
         <member name="M:PokemonReviewApp.Migrations.sedding8.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:PokemonReviewApp.Migrations.Identity2">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.Identity2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.Identity2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.Identity2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:PokemonReviewApp.Migrations.identity6">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.identity6.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.identity6.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.identity6.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:PokemonReviewApp.Migrations.seeding">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.seeding.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.seeding.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:PokemonReviewApp.Migrations.idetntity7">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.idetntity7.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.idetntity7.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PokemonReviewApp.Migrations.idetntity7.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>
