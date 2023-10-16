@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using PokemonReviewApp.DTOs;
+using PokemonReviewApp.Helpers;
 
 namespace PokemonReviewApp.Profiles
 {
@@ -24,6 +26,16 @@ namespace PokemonReviewApp.Profiles
 
             CreateMap<Models.Reviewer , DTOs.ReviewerDto>();
               CreateMap<DTOs.ReviewerDto, Models.Reviewer>();
+
+            CreateMap<ApplicationUser, RegisterDto>();
+               CreateMap<RegisterDto, ApplicationUser>();
+
+            CreateMap<ApplicationUser , TokenRequestDto>();
+                 CreateMap<TokenRequestDto, ApplicationUser>();
+
+
+
+
 
 
         }
