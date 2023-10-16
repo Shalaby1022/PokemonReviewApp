@@ -34,8 +34,8 @@ namespace PokemonReviewApp.Profiles
                  CreateMap<TokenRequestDto, ApplicationUser>();
 
 
-
-
+            CreateMap<ApplicationUser , RoleDto>();
+                 CreateMap<RoleDto , ApplicationUser>();
 
 
         }

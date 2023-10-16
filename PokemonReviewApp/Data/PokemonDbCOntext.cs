@@ -1,9 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using PokemonReviewApp.Models;
+using PokemonReviewApp.Helpers;
 
 namespace PokemonReviewApp.Data
 {
-    public class PokemonDbContext : DbContext
+    public class PokemonDbContext : IdentityDbContext<ApplicationUser>
+
     {
         public DbSet<Pokemon> Pokemons { get; set; }
         public DbSet<Owner> Owners { get; set; }
@@ -45,8 +49,37 @@ namespace PokemonReviewApp.Data
                     .HasOne(p => p.Owner)
                     .WithMany(pc => pc.PokemonOwners)
                     .HasForeignKey(c => c.OwnerId);
+
+
+            // JWT & TOKENS
+            modelBuilder.Entity<IdentityUserLogin<string>>(b =>
+            {
+                b.HasKey(l => new { l.LoginProvider, l.ProviderKey });
+            });
+
+            modelBuilder.Entity<IdentityUserRole<string>>(b =>
+            {
+                b.HasKey(r => new { r.UserId, r.RoleId });
+            });
+
+            modelBuilder.Entity<IdentityUserClaim<string>>(b =>
+            {
+                b.HasKey(uc => uc.Id);
+            });
+
+            modelBuilder.Entity<IdentityUserToken<string>>(b =>
+            {
+                b.HasKey(ut => new { ut.UserId, ut.LoginProvider, ut.Name });
+            });
+
+            modelBuilder.Entity<ApplicationUser>(b =>
+            {
+                
+            });
+
+
         }
-       
+
 
     }
 }

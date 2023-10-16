@@ -18,7 +18,6 @@ namespace PokemonReviewApp.Controllers
         public CountryController(ICountryRepository countryRepository, IMapper mapper)
         {
             _countryRepository = countryRepository ?? throw new ArgumentNullException(nameof(countryRepository));
-
             _mapper = mapper?? throw new ArgumentNullException(nameof(mapper));
         }
 

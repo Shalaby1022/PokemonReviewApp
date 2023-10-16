@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using PokemonReviewApp.Data.Interface;
@@ -15,8 +16,7 @@ namespace PokemonReviewApp.Controllers
     [ApiVersion("1.0")]
     [ApiVersion("2.0")]
     [ApiController]
-    
-
+    [Authorize]
     public class CategoryController : Controller
     {
         private readonly ICategoryRepository _categoryRepository;
