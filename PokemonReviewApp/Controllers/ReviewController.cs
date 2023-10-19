@@ -7,7 +7,7 @@ using PokemonReviewApp.Repository;
 
 namespace PokemonReviewApp.Controllers
 {
-    [Route("api/v{version:apiVersion}/Review")]
+    [Route("api/v{version:apiVersion}/review")]
     [ApiVersion("1.0")]
     [ApiVersion("2.0")]
     [ApiController]
@@ -35,7 +35,7 @@ namespace PokemonReviewApp.Controllers
             return Ok(reviews);
         }
 
-        [HttpGet("{ReviewId}")]
+        [HttpGet("{reviewId}")]
         public IActionResult GetOwner(int ReviewId)
         {
             if (!_reviewRepository.ReviewExist(ReviewId))

@@ -29,12 +29,12 @@ namespace PokemonReviewApp
             });
 
           
-
-
             // Add services to the container.
             builder.Services.AddTransient<Seeding>();
             builder.Services.AddControllers();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
 
 
             // for JWT Mapping for class

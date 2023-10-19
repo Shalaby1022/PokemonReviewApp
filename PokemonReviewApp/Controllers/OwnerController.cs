@@ -7,7 +7,7 @@ using PokemonReviewApp.Repository;
 
 namespace PokemonReviewApp.Controllers
 {
-    [Route("api/v{version:apiVersion}/Owner")]
+    [Route("api/v{version:apiVersion}/owner")]
     [ApiVersion("1.0")]
     [ApiController]
     public class OwnerController : Controller

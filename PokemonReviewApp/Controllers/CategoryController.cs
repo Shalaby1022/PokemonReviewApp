@@ -12,7 +12,7 @@ namespace PokemonReviewApp.Controllers
     /// Represents a controller for managing categories.
     /// </summary>
 
-    [Route("api/v{version:apiVersion}/Category")]
+    [Route("api/v{version:apiVersion}/category")]
     [ApiVersion("1.0")]
     [ApiVersion("2.0")]
     [ApiController]
@@ -56,11 +56,11 @@ namespace PokemonReviewApp.Controllers
         /// <param name="CategoryId">The ID of the category.</param>
         /// <returns>Returns the specified category.</returns>
         /// 
-        [HttpGet("{CategoryId}")]
-        public IActionResult GetCategory(int CategoryId)
+        [HttpGet("{categoryId}")]
+        public IActionResult GetCategory(int categoryId)
         {
-            if(!_categoryRepository.CategoryExist(CategoryId)) { return NotFound();}
-            var specificcategory = _mapper.Map<CategoryDto>(_categoryRepository.GetCategoryById(CategoryId));
+            if(!_categoryRepository.CategoryExist(categoryId)) { return NotFound();}
+            var specificcategory = _mapper.Map<CategoryDto>(_categoryRepository.GetCategoryById(categoryId));
             if(!ModelState.IsValid) return BadRequest(ModelState);
             return Ok(specificcategory);
         }

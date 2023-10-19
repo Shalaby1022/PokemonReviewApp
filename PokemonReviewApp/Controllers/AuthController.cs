@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace PokemonReviewApp.Controllers
 {
-    [Route("api/Auth")]
+    [Route("api/auth")]
     [ApiController]
     public class AuthController : Controller
     {
@@ -25,7 +25,7 @@ namespace PokemonReviewApp.Controllers
             _mapper = mapper;
         }
 
-    [HttpPost("register")]
+       [HttpPost("register")]
         public async Task<IActionResult> RegisterNewUserAsync([FromBody] RegisterDto register)
         {
             if (register == null) return BadRequest(ModelState);
@@ -44,7 +44,7 @@ namespace PokemonReviewApp.Controllers
 
             return Ok("Successfully Added");
         }
-    [HttpPost("Token")]
+       [HttpPost("token")]
         public async Task<IActionResult> GetTokenAsync([FromBody] TokenRequestDto token)
         {
             if (token == null) return BadRequest(ModelState);
@@ -65,7 +65,7 @@ namespace PokemonReviewApp.Controllers
         }
 
         [Authorize]
-        [HttpPost("AddRole")]
+        [HttpPost("add-role")]
         public async Task<IActionResult> AddRoleAsync([FromBody] RoleDto roleDto)
         {
             if (roleDto == null) return BadRequest(ModelState);
