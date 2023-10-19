@@ -56,6 +56,11 @@ PokemonReviewApp is a practical demonstration of building a functional ASP.NET C
    - Create, read, update, and delete Categories.
    - Associate Categories with Pokemon.
 
+- **JWT Authentication:**
+   - Implement secure user registration.
+   - Generate authentication tokens for users.
+   - Manage user roles securely.
+
 - **Interactive API Documentation:**
    - Explore and test API endpoints using Swagger UI.
 
@@ -71,6 +76,7 @@ During the development of PokemonReviewApp, we've gained valuable insights into:
 - Enhancing the developer experience with interactive API documentation using Swagger UI.
 - Adding searching and filtering functionality for improved data retrieval.
 - Managing API versioning to accommodate changes over time.
+- Implementing secure user registration and authentication using JWT.
 - Documenting API endpoints for better clarity and understanding.
 
 ## Getting Started
