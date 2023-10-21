@@ -73,6 +73,9 @@ During the development of PokemonReviewApp, we've gained valuable insights into:
 - Leveraging Entity Framework Core for efficient database operations.
 - Designing controllers and actions for CRUD operations.
 - Promoting modularity and testability through dependency injection and the repository pattern.
+- Implementing validation attributes with custom error messages on my Data Transfer Objects (DTOs).
+- Developing a custom class for attribute validation, extending the default validation capabilities provided by ASP.NET Core. This class allows for more sophisticated validation logic.
+- Handling invalid model state responses by reporting them as validation issues. This ensures that clients receive appropriate HTTP status codes and detailed information about validation errors.
 - Enhancing the developer experience with interactive API documentation using Swagger UI.
 - Adding searching and filtering functionality for improved data retrieval.
 - Managing API versioning to accommodate changes over time.
