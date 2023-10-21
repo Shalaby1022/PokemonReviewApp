@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using Azure;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.VisualStudio.Services.WebApi.Patch;
 using PokemonReviewApp.Data.Interface;
 using PokemonReviewApp.DTOs;
 using PokemonReviewApp.Models;
@@ -56,6 +59,7 @@ namespace PokemonReviewApp.Controllers
         /// <param name="CategoryId">The ID of the category.</param>
         /// <returns>Returns the specified category.</returns>
         /// 
+
         [HttpGet("{categoryId}")]
         public IActionResult GetCategory(int categoryId)
         {
@@ -111,7 +115,6 @@ namespace PokemonReviewApp.Controllers
                 ModelState.AddModelError("", "Category with the same name already exist");
                 return StatusCode(422 , ModelState);
 
-
             }
 
             if(!ModelState.IsValid) { return BadRequest(ModelState); }
@@ -124,7 +127,7 @@ namespace PokemonReviewApp.Controllers
                 return StatusCode(500, ModelState);
 
             }
-            return Ok(categorymap);
+            return NoContent();
         }
 
 
@@ -156,6 +159,7 @@ namespace PokemonReviewApp.Controllers
             return Ok("Successfully updated");
 
         }
+
 
         /// <summary>
         /// Deletes a category by ID.

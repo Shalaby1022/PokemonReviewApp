@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using PokemonReviewApp.Data.Interface;
 using PokemonReviewApp.DTOs;
@@ -114,6 +115,38 @@ namespace PokemonReviewApp.Controllers
 
             return NoContent();
         }
+
+        //[HttpPatch("categoryId")]
+        //public async Task<IActionResult> PartiallyUpdateResource(int categoryId, JsonPatchDocument<CountryDto> partiallyUpdateCountry)
+        //{
+        //    if (partiallyUpdateCountry == null) return BadRequest(ModelState);
+        //    if (!_countryRepository.CountryExist(categoryId)) return NotFound();
+        //    if (!ModelState.IsValid) return BadRequest(ModelState);
+
+        //    var exisitingCountry = _countryRepository.GetCountryById(categoryId);
+
+        //    if (exisitingCountry == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    // Apply the changes from the patch document to the existing category
+        //    var CountryToPatch = _mapper.Map<CountryDto>(exisitingCountry);
+        //    partiallyUpdateCountry.ApplyTo(CountryToPatch);
+
+        //    _mapper.Map(CountryToPatch , exisitingCountry);
+
+        //    if (!_countryRepository.UpdateCountry(exisitingCountry))
+        //    {
+        //        ModelState.AddModelError("", "Somehting went wrong while updaing Country");
+        //        return StatusCode(500, ModelState);
+        //    }
+
+        //    partiallyUpdateCountry.ApplyTo(CountryToPatch);
+
+        //    return NoContent();
+
+        //}
 
         [HttpDelete("{countryId}")]
         public IActionResult DeleteCountry(int countryId)

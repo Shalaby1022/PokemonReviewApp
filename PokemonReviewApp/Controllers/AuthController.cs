@@ -21,8 +21,8 @@ namespace PokemonReviewApp.Controllers
 
         public AuthController(IAuthRepository authRepository , IMapper mapper)
         {
-            _authRepository = authRepository;
-            _mapper = mapper;
+            _authRepository = authRepository ?? throw new ArgumentNullException(nameof(authRepository));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
        [HttpPost("register")]
