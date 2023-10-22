@@ -5,6 +5,7 @@ namespace PokemonReviewApp.Data.Interface
     public interface ICountryRepository
     {
         ICollection<Country> GetAllCountries();
+        ICollection<Country> GetAllCountries(string? name, string? SearchQuery);
         Country GetCountryById(int id);
         Country GetCountryByOwner(int ownerid);
         ICollection<Owner> GetownersfromAcountry(int countryId);
