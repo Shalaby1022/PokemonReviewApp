@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using PokemonReviewApp.DTOs;
-using PokemonReviewApp.Helpers;
+using PokemonReviewApp.Helpers.AuthJWT;
 
 namespace PokemonReviewApp.Profiles
 {

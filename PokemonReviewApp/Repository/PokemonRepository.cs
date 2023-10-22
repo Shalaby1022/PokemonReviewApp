@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Services.WebApi;
 using PokemonReviewApp.Data;
 using PokemonReviewApp.Data.Interface;
+using PokemonReviewApp.Helpers;
 using PokemonReviewApp.Models;
+using PokemonReviewApp.ResourceParameters;
 using System.Net;
 
 namespace PokemonReviewApp.Repository
@@ -50,6 +53,42 @@ namespace PokemonReviewApp.Repository
         public ICollection<Pokemon> GetAllPokemons()
         {
             return _context.Pokemons.OrderBy(p => p.Id).ToList();
+        }
+
+        public async Task<PageList<Pokemon>> GetAllPokemons(PokemonResourceParameters pokemonResourceParameters)
+        {
+
+            if (pokemonResourceParameters == null)
+            {
+                throw new ArgumentNullException(nameof(pokemonResourceParameters));
+            }
+                var collection = _context.Pokemons as IQueryable<Pokemon>;
+
+                if (!string.IsNullOrEmpty(pokemonResourceParameters.name))
+                {
+                    pokemonResourceParameters.name = pokemonResourceParameters.name.Trim();
+                    collection = collection.Where(c => c.Name == pokemonResourceParameters.name);
+                }
+
+                if (!string.IsNullOrEmpty(pokemonResourceParameters.SearchQuery))
+                {
+                    pokemonResourceParameters.SearchQuery = pokemonResourceParameters.SearchQuery.Trim();
+                    collection = collection.Where(a => a.Name.Contains(pokemonResourceParameters.SearchQuery));
+
+                }
+
+            //return collection
+            //.Skip(pokemonResourceParameters.PageSize *(pokemonResourceParameters.PageSize - 1))
+            //.Take(pokemonResourceParameters.PageSize)
+            //.ToList();
+            //var pagedList = await PageList<Pokemon>.CreateAsync(collection, pokemonResourceParameters.PageNumber, pokemonResourceParameters.PageSize);
+
+            //return pagedList;
+
+            var pagedList = PageList<Pokemon>.CreateAsync(collection, pokemonResourceParameters.PageNumber, pokemonResourceParameters.PageSize).Result;
+
+            return pagedList;
+
         }
 
         public decimal GetPokemonRating(int pokieId)

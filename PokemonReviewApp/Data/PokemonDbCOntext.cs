@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PokemonReviewApp.Models;
-using PokemonReviewApp.Helpers;
+using PokemonReviewApp.Helpers.AuthJWT;
 
 namespace PokemonReviewApp.Data
 {

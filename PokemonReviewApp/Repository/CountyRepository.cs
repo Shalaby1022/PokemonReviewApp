@@ -37,6 +37,29 @@ namespace PokemonReviewApp.Repository
 
         }
 
+        public  ICollection<Country> GetAllCountries(string? name, string? SearchQuery)
+        {
+                if (string.IsNullOrEmpty(name) && string.IsNullOrEmpty(SearchQuery)) return GetAllCountries();
+
+                var collection = _context.Countries as IQueryable<Country>;
+
+                if (!string.IsNullOrEmpty(name))
+                {
+                    name = name.Trim();
+                    collection = collection.Where(c => c.Name == name);
+                }
+
+                if (!string.IsNullOrEmpty(SearchQuery))
+                {
+                    SearchQuery = SearchQuery.Trim();
+                    collection = collection.Where(a => a.Name.Contains(SearchQuery));
+
+
+                }
+
+                return collection.ToList();
+            }
+
         public Country GetCountryById(int id)
         {
             if (id <= 0)

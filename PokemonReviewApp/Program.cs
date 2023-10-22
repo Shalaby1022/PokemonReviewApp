@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using PokemonReviewApp.Data;
 using PokemonReviewApp.Data.Interface;
-using PokemonReviewApp.Helpers;
+using PokemonReviewApp.Helpers.AuthJWT;
 using PokemonReviewApp.Migrations;
 using PokemonReviewApp.Repository;
 using System.Reflection;
