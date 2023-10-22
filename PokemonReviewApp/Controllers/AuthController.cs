@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Win32;
 using PokemonReviewApp.Data.Interface;
 using PokemonReviewApp.DTOs;
-using PokemonReviewApp.Helpers;
 using PokemonReviewApp.Models;
 using PokemonReviewApp.Repository;
 using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 using System.Security.Cryptography.Xml;
 using Microsoft.AspNetCore.Authorization;
+using PokemonReviewApp.Helpers.AuthJWT;
 
 namespace PokemonReviewApp.Controllers
 {

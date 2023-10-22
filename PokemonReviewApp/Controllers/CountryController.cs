@@ -24,15 +24,16 @@ namespace PokemonReviewApp.Controllers
 
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Country>))]
-        public IActionResult GetCountries()
+        public IActionResult GetAllCountries(string? name , string? searchQuery)
         {
-            var countries = _mapper.Map<List<CountryDto>>(_countryRepository.GetAllCountries());
+            var countries = _mapper.Map<IEnumerable<CountryDto>>(_countryRepository.GetAllCountries(name , searchQuery));
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             return Ok(countries);
         }
+
         [HttpGet("{countryId}")]
        
         public IActionResult GetCountry(int countryId)

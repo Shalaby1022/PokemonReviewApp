@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using PokemonReviewApp.Data.Interface;
 using PokemonReviewApp.DTOs;
 using PokemonReviewApp.Models;
+using PokemonReviewApp.Repository;
+using PokemonReviewApp.ResourceParameters;
 
 namespace PokemonReviewApp.Controllers
 {
@@ -23,10 +25,10 @@ namespace PokemonReviewApp.Controllers
             _reviewRepository = reviewRepository ?? throw new ArgumentNullException(nameof(reviewRepository));
         }
 
-       [HttpGet]
-        public ActionResult<IEnumerable<Pokemon>> GetAllPokies()
+        [HttpGet]
+        public ActionResult<IEnumerable<Pokemon>> GetAllPokies([FromQuery] PokemonResourceParameters pokemonResourceParameters)
         {
-            var pokies =  _mapper.Map<IEnumerable<DTOs.PokemonDto>>(_pokemonRepository.GetAllPokemons());
+            var pokies =  _mapper.Map<IEnumerable<DTOs.PokemonDto>>(_pokemonRepository.GetAllPokemons(pokemonResourceParameters));
             if(!ModelState.IsValid) 
             {
                 return BadRequest();
