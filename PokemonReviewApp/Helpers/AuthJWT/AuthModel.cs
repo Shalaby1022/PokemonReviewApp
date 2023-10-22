@@ -1,4 +1,4 @@
-﻿namespace PokemonReviewApp.Helpers
+﻿namespace PokemonReviewApp.Helpers.AuthJWT
 {
     public class AuthModel
     {

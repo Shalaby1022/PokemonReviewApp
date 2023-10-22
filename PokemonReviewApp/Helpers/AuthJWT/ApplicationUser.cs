@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace PokemonReviewApp.Helpers
+namespace PokemonReviewApp.Helpers.AuthJWT
 {
     public class ApplicationUser : IdentityUser
     {
