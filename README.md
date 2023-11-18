@@ -29,8 +29,10 @@ PokemonReviewApp is a practical demonstration of building a functional ASP.NET C
    - Employing dependency injection for modularity and testability.
    - Utilizing the repository pattern for data access.
 
-5. **Searching and Filtering:**
+5. **Searching, Filtering, Sorting and Pagination:**
    - Implementing functionality for searching and filtering Pokemon, Owners, and Categories.
+   - Introducing sorting options for better data organization.
+   - Implementing pagination to efficiently manage large datasets.
 
 6. **Versioning:**
    - Incorporating versioning to manage API changes over time.
