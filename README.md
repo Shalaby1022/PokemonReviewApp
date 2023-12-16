@@ -1,6 +1,7 @@
 # PokemonReviewApp
 
-Welcome to PokemonReviewApp! This project is an ASP.NET Core Web API application developed as part of a tutorial series by Teddy Smith. It covers a wide range of ASP.NET Core Web API concepts and techniques.
+EnhancedPokemonReviewApp represents a culmination of knowledge acquired from esteemed courses and experts in ASP.NET Core Web API development. Integrating insights from Teddy Smith's tutorial series, Kevin Docks' advanced features, and Pluralsight's in-depth courses, the application boasts a robust architecture and modern approach. Leveraging Julie Lerman's EF Core mastery ensures an efficient and scalable data access layer, while LINQ expertise from Paul Sheriff optimizes query logic. Defensive coding principles from Deborah Kurata fortify the application against vulnerabilities, and Gil Cleerne's ASP.NET Core insights contribute to industry-standard practices. This project is a dynamic synthesis of continuous learning, promising ongoing evolution to incorporate the latest advancements in ASP.NET Core Web API development.
+
 
 ## Table of Contents
 - [Project Overview](#project-overview)
@@ -28,8 +29,10 @@ PokemonReviewApp is a practical demonstration of building a functional ASP.NET C
    - Employing dependency injection for modularity and testability.
    - Utilizing the repository pattern for data access.
 
-5. **Searching and Filtering:**
+5. **Searching, Filtering, Sorting and Pagination:**
    - Implementing functionality for searching and filtering Pokemon, Owners, and Categories.
+   - Introducing sorting options for better data organization.
+   - Implementing pagination to efficiently manage large datasets.
 
 6. **Versioning:**
    - Incorporating versioning to manage API changes over time.
