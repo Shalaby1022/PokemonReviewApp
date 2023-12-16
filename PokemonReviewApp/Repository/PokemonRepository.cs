@@ -2,9 +2,11 @@
 using Microsoft.VisualStudio.Services.WebApi;
 using PokemonReviewApp.Data;
 using PokemonReviewApp.Data.Interface;
+using PokemonReviewApp.DTOs;
 using PokemonReviewApp.Helpers;
 using PokemonReviewApp.Models;
 using PokemonReviewApp.ResourceParameters;
+using PokemonReviewApp.Services;
 using System.Net;
 
 namespace PokemonReviewApp.Repository
@@ -12,10 +14,12 @@ namespace PokemonReviewApp.Repository
     public class PokemonRepository : IPokemonRepository
     {
         private readonly PokemonDbContext _context;
+        private readonly IPropertyMappingService _propertyMappingService;
 
-        public PokemonRepository(PokemonDbContext context)
+        public PokemonRepository(PokemonDbContext context , IPropertyMappingService propertyMappingService)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
+            _propertyMappingService = propertyMappingService ?? throw new ArgumentNullException(nameof(propertyMappingService));
         }
 
         public bool CreatePokemon(int ownerId, int categoryId, Pokemon pokemonn)
@@ -76,6 +80,34 @@ namespace PokemonReviewApp.Repository
                     collection = collection.Where(a => a.Name.Contains(pokemonResourceParameters.SearchQuery));
 
                 }
+
+            if (!string.IsNullOrEmpty(pokemonResourceParameters.OrderBy))
+            {
+                // Get property mapping dictionary
+                var authorPrpertyMappingDictionary = _propertyMappingService.GetPropertyMapping<PokemonDto, Pokemon>();
+
+                //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               collection = collection.ApplySort(pokemonResourceParameters.OrderBy , authorPrpertyMappingDictionary);
+
+                collection = collection.OrderBy(a => a.Name);
+
+            }
+
+
 
             //return collection
             //.Skip(pokemonResourceParameters.PageSize *(pokemonResourceParameters.PageSize - 1))
