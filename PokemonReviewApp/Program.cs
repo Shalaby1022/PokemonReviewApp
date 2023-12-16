@@ -5,14 +5,20 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.VisualStudio.Services.Organization.Client;
 using PokemonReviewApp.Data;
 using PokemonReviewApp.Data.Interface;
 using PokemonReviewApp.Helpers.AuthJWT;
 using PokemonReviewApp.Migrations;
 using PokemonReviewApp.Repository;
+using PokemonReviewApp.Services;
+using Serilog;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using PokemonReviewApp.Configurations;
 
 namespace PokemonReviewApp
 {
@@ -20,7 +26,22 @@ namespace PokemonReviewApp
     {
         public static void Main(string[] args)
         {
+            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  policy =>
+                                  {
+                                      policy.AllowAnyOrigin()
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader();
+
+                                  });
+            });
+
 
 
             //registering the DB connectiviety using EF core.
@@ -82,9 +103,7 @@ namespace PokemonReviewApp
 
 
             builder.Services.AddTransient<Seeding>();
-          
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
 
 
 
@@ -128,6 +147,9 @@ namespace PokemonReviewApp
             builder.Services.AddScoped<IReviewerRepsitory , ReviewerRepository>();
 
             builder.Services.AddScoped<IAuthRepository, AuthRepsitory>();
+            
+            // for sorting 
+            builder.Services.AddTransient<IPropertyMappingService , PropertyMappingService>();
 
 
 
@@ -147,7 +169,21 @@ namespace PokemonReviewApp
                 setupAction.ReportApiVersions = true;
 
 
-            });            
+            });
+
+
+            builder.Logging.AddConsole();
+            
+            var Logger = new LoggerConfiguration()
+            .ReadFrom.Configuration(builder.Configuration) // <-- Check this line
+            .CreateLogger();
+            builder.Logging.ClearProviders();
+            builder.Host.UseSerilog(Logger);
+
+
+            
+         
+
 
 
             var app = builder.Build();
@@ -173,14 +209,36 @@ namespace PokemonReviewApp
                 app.UseSwaggerUI();
             }
 
+            app.UseSerilogRequestLogging();
+
             app.UseHttpsRedirection();
-            app.UseAuthentication();
+
             app.UseRouting();
+
+            app.UseCors(MyAllowSpecificOrigins);
+
+            app.UseAuthentication();
+
             app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+
+                app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapGet("/echo",
+                       context => context.Response.WriteAsync("echo"))
+                                 .RequireCors(MyAllowSpecificOrigins);
+
+                endpoints.MapControllers()
+                .RequireCors(MyAllowSpecificOrigins);
+
+
             });
+
+            app.AddGlobalErrorHandlingMiddleWare();
 
             app.Run();
         }
